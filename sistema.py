@@ -48,11 +48,13 @@ class Tarefa:
                 break
 
 class ListaDeTarefas:
+    tamanho_da_lista = 0
     def __init__(self):
         self.tarefas = []
 
     def adicionar_tarefa(self, tarefa):
         self.tarefas.append(tarefa)
+        ListaDeTarefas.tamanho_da_lista += 1
         print('Tarefa adicionada com sucesso!')
 
     def remover_tarefa(self):
@@ -62,20 +64,25 @@ class ListaDeTarefas:
             if 0 <= indice < len(self.tarefas):
                 self.tarefas.pop(indice)
                 print('Tarefa removida com sucesso!')
+                ListaDeTarefas.tamanho_da_lista -= 1
                 break
             else:
                 print('ERRO! Tarefa não encontrada.')
 
     def exibir_tarefas(self):
-        if len(self.tarefas) == 0:
-            print('A lista de tarefas está vazia!')
-        else:
+            print('----------------'.center(75))
+            print('Lista de tarefas'.center(75))
+            print('----------------'.center(75))
             print('-' * 80)
             print(f'{'N°  Descrição':<28} {'Status':>20} {'Data':>8} {'Prioridade':>19}')
             print('-'*80)
-            for tarefa in self.tarefas:
-                print(self.tarefas.index(tarefa) + 1, end=' - ')
-                print(tarefa)
+            if ListaDeTarefas.tamanho_da_lista == 0:
+                print('A lista de tarefas está vazia!')
+            else:
+                for tarefa in self.tarefas:
+                    print(self.tarefas.index(tarefa) + 1, end=' - ')
+                    print(tarefa)
+            print('-' * 80)
 
     def filtrar_status(self, status):
         for tarefa in self.tarefas:

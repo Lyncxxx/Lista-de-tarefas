@@ -4,9 +4,10 @@ from sistema import *
 
 def main():
     while True:
-        opcao = leia_int('''--------------------------------
-        Lista de tarefas
---------------------------------
+        opcao = leia_int('''
+================================
+             MENU
+================================
 [1] Ver lista de tarefas
 [2] Adicionar tarefa
 [3] Remover tarefa
@@ -39,8 +40,8 @@ def main():
                     if 0 <= indice < tamanho_da_lista:
                         while True:
                             res = leia_int('''[1] Alterar descrição
-    [2] Alterar data
-    > ''')
+[2] Alterar data
+> ''')
                             if res in range(1, 3):
                                 break
                             else:
